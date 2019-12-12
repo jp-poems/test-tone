@@ -13,6 +13,10 @@
   "dependencies": {
     "p5": "^0.10.2",
     "parcel": "^1.12.4",
+    "random-int": "^2.0.1",
     "tone": "^13.8.25"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2"
   }
 }
