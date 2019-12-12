@@ -1,8 +1,10 @@
 import * as TONE from "tone"
 import randomInt from 'random-int'
+import { prepareVis } from './sketch'
 
 let osc
 let env
+let currentNoteFreq = 440
 
 const config = {
   osc: {
@@ -29,6 +31,10 @@ const noteLength = {
   N8: '8n',
   N16: 'n16'
 }
+
+const noteFreq = [
+  110, 220, 329.63, 392, 440, 493.88, 523.25
+]
 
 /**
  * Init
@@ -74,5 +80,12 @@ function playNote(noteLength) {
  */
 function tick(time) {
   if(randomInt(0, 100) >= config.tick.chanceOfNote) return
+  // Avoid duplicate notes
+  const freqs = noteFreq.filter(f => {
+    if(f !== currentNoteFreq) return f
+  })
+  currentNoteFreq = freqs[randomInt(0, freqs.length)]
+  osc.set('frequency', currentNoteFreq)
   playNote(noteLength.N8)
+  prepareVis(currentNoteFreq)
 }
