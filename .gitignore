@@ -1,0 +1,18 @@
+# IDE
+.vscode/
+
+# Node JS
+node_modules/
+build/
+npm-debug.log
+
+# Parcel
+.cache/
+dist/
+
+# Yarn
+yarn-error.log
+
+# System
+.env
+.DS_Store
